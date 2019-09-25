@@ -10,6 +10,11 @@ use App\Http\Resources\ReplyResource;
 
 class ReplyController extends Controller
 {
+    public function __construct()
+    {
+        // yang bisa di akses tanpa login adalah fungsi index dan show sisanya memakai token jwt
+        $this->middleware('JWT', ['except' => ['index','show']]);
+    }
     /**
      * Display a listing of the resource.
      *

@@ -14,7 +14,7 @@ Route::post('like/{reply}','LikeController@likeIt');
 Route::delete('like/{reply}','LikeController@unLikeIt');
 
 Route::group([
-  
+
   'middleware' => 'api',
   'prefix' => 'auth'
 
@@ -22,6 +22,7 @@ Route::group([
 
   Route::post('login', 'AuthController@login');
   Route::post('logout', 'AuthController@logout');
+  Route::post('register', 'AuthController@signup');
   Route::post('refresh', 'AuthController@refresh');
   Route::post('me', 'AuthController@me');
 

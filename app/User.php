@@ -58,4 +58,10 @@ class User extends Authenticatable implements JWTSubject
         return [];
     }
 
+    // Password nya itu field name dari table 
+    public function setPasswordAttribute($value)
+    {
+        $this->attributes['password'] = bcrypt($value);
+    }
+
 }

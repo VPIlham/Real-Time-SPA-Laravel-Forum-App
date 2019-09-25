@@ -9,6 +9,11 @@ use App\Http\Resources\QuestionResource;
 
 class QuestionController extends Controller
 {
+    public function __construct()
+    {
+        // yang bisa di akses tanpa login adalah fungsi index dan show sisanya memakai token jwt
+        $this->middleware('JWT', ['except' => ['index','show']]);
+    }
 
     public function index()
     {
