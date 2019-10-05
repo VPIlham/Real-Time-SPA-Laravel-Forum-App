@@ -10,7 +10,8 @@
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Email address</label>
                                 <input type="email" class="form-control" id="exampleInputEmail1"
-                                    aria-describedby="emailHelp" placeholder="Enter email" required name="email" v-model="form.email">
+                                    aria-describedby="emailHelp" placeholder="Enter email" required name="email"
+                                    v-model="form.email">
                                 <small id="emailHelp" class="form-text text-muted">We'll never share your email with
                                     anyone else.</small>
                             </div>
@@ -24,6 +25,7 @@
                                 <label class="form-check-label" for="exampleCheck1">Check me out</label>
                             </div>
                             <button type="submit" class="btn btn-primary">Submit</button>
+                            <router-link to="/register" class="btn btn-success">Register</router-link>
                         </form>
                     </div>
 
@@ -34,19 +36,27 @@
 </template>
 
 <script>
-export default {
-  data(){
-    return {
-      form : {
-        email : null,
-        password : null,
-      }
+    export default {
+        data() {
+            return {
+                form: {
+                    email: null,
+                    password: null,
+                }
+            }
+        },
+        created() {
+            if (User.loggedIn()) {
+                this.$router.push({
+                    name: 'forum'
+                })
+            }
+        },
+        methods: {
+            login() {
+                User.login(this.form);
+            }
+        }
     }
-  },
-  methods : {
-    login(){
-     User.login(this.form);
-    }
-  }  
-}
+
 </script>

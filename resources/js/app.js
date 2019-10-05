@@ -9,6 +9,7 @@ Vue.component('app-home', require('./components/AppHome.vue').default);
 
 // jadi class user menjadi Class Global
 window.User = User;
+window.EventBus = new Vue();
 
 const app = new Vue({
     el: '#app',
