@@ -18,3 +18,8 @@ Route::get('/', function () {
 Route::get('{name}',function(){
 	return redirect('/');
 })->where('name','[\/\w\.-]*');
+
+Route::get('{any}/{any1}',function(){
+	return redirect('/');
+})->where('name','[\/\w\.-]*');
+
